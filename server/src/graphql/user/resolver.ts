@@ -1,5 +1,1 @@
-export const userQuery = {
-  user(): string {
-    return '';
-  },
-};
+export const userMutation = {};

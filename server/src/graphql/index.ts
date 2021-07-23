@@ -1,6 +1,7 @@
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
-import { userQuery } from './user/resolver';
+import { itemMutation, itemQuery } from './item/resolver';
+import { userMutation } from './user/resolver';
 export const schema = loadSchemaSync('./**/*.graphqls', {
   // load files and merge them into a single schema object
   loaders: [new GraphQLFileLoader()],
@@ -8,7 +9,10 @@ export const schema = loadSchemaSync('./**/*.graphqls', {
 
 export const resolvers = {
   Query: {
-    ...userQuery,
+    ...itemQuery,
   },
-  Mutation: {},
+  Mutation: {
+    ...userMutation,
+    ...itemMutation,
+  },
 };

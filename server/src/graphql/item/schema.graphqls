@@ -1,0 +1,18 @@
+extend type User {
+  _empty: String
+}
+
+type Item {
+  id: ID
+  title: String
+  created_by: User
+  created_at: String
+}
+
+type Query {
+  findAll: [Item]
+}
+
+type Mutation {
+  add(title: String!): Item
+}

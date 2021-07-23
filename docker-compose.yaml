@@ -5,15 +5,9 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     ports:
-      - "5000:5000"
-    environment:
-      - PORT=5000
-      - DB_USERNAME=root
-      - DB_PASSWORD=
-      - PGDATABASE=demodb
-      - PGHOST=postgres
+      - "5555:5555"
     depends_on:
-      - demodatabase
+      - postgres
   postgres:
     image: postgres:12.3
     environment:
