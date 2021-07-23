@@ -1,5 +1,3 @@
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testTimeout: 50000,
-};
+export const preset = 'ts-jest';
+export const testEnvironment = 'node';
+export const testTimeout = 50000;
