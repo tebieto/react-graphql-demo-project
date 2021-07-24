@@ -1,4 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
+import { comparePassword, encryptPassword } from '../../../../functions';
 import { UserAttributes } from '../../../../interface/user';
 import { sequelize } from '../index';
 
@@ -18,6 +19,7 @@ const User = sequelize.define<UserModel>('User', {
     unique: true,
     type: DataTypes.STRING,
   },
+  password: { type: DataTypes.STRING },
   full_name: {
     allowNull: false,
     type: DataTypes.STRING,
