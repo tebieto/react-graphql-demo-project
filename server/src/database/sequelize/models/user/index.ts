@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, UUIDV4 } from 'sequelize';
 import { UserAttributes } from '../../../../interface/user';
 import { sequelize } from '../index';
 
@@ -12,6 +12,7 @@ const User = sequelize.define<UserModel>('User', {
     primaryKey: true,
     type: DataTypes.UUID,
     unique: true,
+    defaultValue: UUIDV4,
   },
   email: {
     allowNull: false,

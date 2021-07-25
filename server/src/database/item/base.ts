@@ -33,7 +33,7 @@ const itemBase = ({ models }: ItemBaseAttr): ItemBaseQuery => {
   async function getAllItems(): Promise<ItemModel[] | null | void> {
     try {
       const Item = models.Item;
-      const res = await Item.findAll();
+      const res = await Item.findAll({ include: { all: true } });
       return res;
     } catch (e) {
       console.log('Error: ', e);
