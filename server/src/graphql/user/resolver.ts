@@ -1,6 +1,24 @@
 import { Response } from 'express';
-import { loginUser, registerUser } from '../../controllers/user';
+import {
+  getCurrentUser,
+  loginUser,
+  registerUser,
+  resetUserPassword,
+} from '../../controllers/user';
 import { UserAttributes } from '../../interface/user';
+
+export const userQuery = {
+  async currentUser(
+    _: void,
+    __: void,
+    { user }: { user: UserAttributes },
+  ): Promise<UserAttributes | void> {
+    const httpRequest = {
+      user,
+    };
+    return await getCurrentUser(httpRequest);
+  },
+};
 
 export const userMutation = {
   async register(
@@ -24,5 +42,16 @@ export const userMutation = {
       res,
     };
     return await loginUser(httpRequest);
+  },
+  async resetPassword(
+    _: void,
+    { email }: UserAttributes,
+    { res }: { res: Response },
+  ): Promise<string | void> {
+    const httpRequest = {
+      params: { email },
+      res,
+    };
+    return await resetUserPassword(httpRequest);
   },
 };

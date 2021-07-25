@@ -29,9 +29,11 @@ export const encryptPassword = async (password: string): Promise<string> => {
   return (await password) ? bcrypt.hash(password, salt) : '';
 };
 
-export const comparePassword = async (
-  password: string,
-  thisPassword: string,
-): Promise<boolean> => {
-  return await bcrypt.compare(password, thisPassword);
+export const bcryptCompare = () => {
+  return async (
+    plainString: string,
+    encryptedString: string,
+  ): Promise<boolean> => {
+    return await bcrypt.compare(plainString, encryptedString);
+  };
 };

@@ -1,11 +1,16 @@
 type User {
   id: ID
-  name: String
+  full_name: String
   email: String
   created_at: String
 }
 
+type Query {
+  currentUser: User
+}
+
 type Mutation {
-  register(email: String!, full_name: String!, password: String!): String
-  login(email: String!, password: String!): String
+  register(email: String!, full_name: String!, password: String!): User
+  login(email: String!, password: String!): User
+  resetPassword(email: String!): String
 }

@@ -1,0 +1,8 @@
+type Token {
+  email: String
+  token: String
+}
+
+type Mutation {
+  validateResetPasswordToken(email: String!, token: String!): Token
+}

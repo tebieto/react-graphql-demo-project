@@ -1,8 +1,6 @@
-import { UserAttributes } from '../user';
-
 export interface ItemAttributes {
-  id: string;
+  id?: string;
   title: string;
-  created_by: UserAttributes;
+  created_by?: string;
   created_at?: string;
 }

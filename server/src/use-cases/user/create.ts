@@ -22,7 +22,7 @@ const persistUser = ({ makeUsers, userDb }: PersistUser) => {
       if (user) {
         return user;
       } else {
-        throw new Error('Error on inserting employee, please try again.');
+        throw new Error('Error creatingting user, please try again.');
       }
     }
   };

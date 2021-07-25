@@ -10,9 +10,9 @@ type Item {
 }
 
 type Query {
-  findAll: [Item]
+  getItems: [Item]
 }
 
 type Mutation {
-  add(title: String!): Item
+  addItem(title: String!): Item
 }

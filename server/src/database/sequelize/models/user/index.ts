@@ -1,5 +1,4 @@
 import { DataTypes, Model } from 'sequelize';
-import { comparePassword, encryptPassword } from '../../../../functions';
 import { UserAttributes } from '../../../../interface/user';
 import { sequelize } from '../index';
 
