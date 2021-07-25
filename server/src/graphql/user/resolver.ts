@@ -1,5 +1,6 @@
 import { Response } from 'express';
 import {
+  changeUserPasswordAfterReset,
   getCurrentUser,
   loginUser,
   registerUser,
@@ -53,5 +54,16 @@ export const userMutation = {
       res,
     };
     return await resetUserPassword(httpRequest);
+  },
+  async changePasswordAfterReset(
+    _: void,
+    params: { email: string; password: string; token: string },
+    { res }: { res: Response },
+  ): Promise<string | void> {
+    const httpRequest = {
+      params,
+      res,
+    };
+    return await changeUserPasswordAfterReset(httpRequest);
   },
 };

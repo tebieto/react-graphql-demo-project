@@ -4,15 +4,19 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
+    "start": "yarn dev",
     "build": "tsc --project ./",
-    "dev": "ts-node-dev -r dotenv/config --respawn --pretty --transpile-only src/index.ts"
+    "build-client": "cd ../client &&  yarn install && yarn build",
+    "dev": "yarn install && yarn build-client && ts-node-dev -r dotenv/config --respawn --pretty --transpile-only src/index.ts"
   },
   "dependencies": {
     "@graphql-tools/graphql-file-loader": "^6.2.7",
     "@graphql-tools/load": "^6.2.8",
     "apollo-datasource-rest": "^3.0.2",
-    "apollo-server": "^3.0.2",
+    "apollo-server-express": "^3.0.2",
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "email-templates": "^8.0.7",
@@ -27,7 +31,10 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/compression": "^1.7.1",
+    "@types/cookie-parser": "^1.4.2",
     "@types/email-templates": "^8.0.4",
+    "@types/express-jwt": "^6.0.2",
     "@types/jsonwebtoken": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",

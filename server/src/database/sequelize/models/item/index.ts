@@ -18,7 +18,7 @@ const Item = sequelize.define<ItemModel>('Item', {
     allowNull: false,
     type: DataTypes.UUID,
     references: {
-      model: 'User',
+      model: 'Users',
       key: 'id',
     },
   },

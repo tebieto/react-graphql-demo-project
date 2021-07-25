@@ -11,12 +11,16 @@ interface UserBaseAttr {
 export interface UserBaseQuery {
   persistNewUser: { (data: UserAttributes): Promise<UserAttributes | void> };
   getUserByEmail: { (data: UserAttributes): Promise<UserModel | null | void> };
+  updateUserPassword: {
+    (data: UserAttributes): Promise<UserModel | null | void>;
+  };
 }
 
 const userBase = ({ models }: UserBaseAttr): UserBaseQuery => {
   return Object.freeze({
     persistNewUser,
     getUserByEmail,
+    updateUserPassword,
   });
 
   async function persistNewUser(
@@ -37,6 +41,21 @@ const userBase = ({ models }: UserBaseAttr): UserBaseQuery => {
       const User = models.User;
       const res = await User.findOne({ where: { email } });
       return res;
+    } catch (e) {
+      console.log('Error: ', e);
+    }
+  }
+  async function updateUserPassword({
+    email,
+    password,
+  }: UserAttributes): Promise<UserModel | null | void> {
+    try {
+      const User = models.User;
+      const res = await User.findOne({ where: { email } });
+      if (res) {
+        await res.update({ password });
+        return res;
+      }
     } catch (e) {
       console.log('Error: ', e);
     }

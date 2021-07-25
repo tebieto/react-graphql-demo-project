@@ -53,8 +53,10 @@ const tokenBase = ({ models }: TokenBaseAttr): TokenBaseQuery => {
     try {
       const Token = models.Token;
       const res = await Token.findOne({ where: { email } });
-      res?.destroy();
-      return res;
+      if (res) {
+        res.destroy();
+        return res;
+      }
     } catch (e) {
       console.log('Error: ', e);
     }
