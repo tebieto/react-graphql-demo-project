@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Styled(WithStyles(ForwardRef(AppBar)))
+  color="secondary"
+  elevation={1}
+  position="static"
+>
+  <Styled(WithStyles(ForwardRef(Toolbar)))>
+    <Logo />
+    <div
+      className="search-input-container"
+    >
+      <CustomInput
+        handleIconClick={[Function]}
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Search"
+        size="small"
+        value=""
+      />
+    </div>
+    <HeaderProfileSection />
+  </Styled(WithStyles(ForwardRef(Toolbar)))>
+</Styled(WithStyles(ForwardRef(AppBar)))>
+`;

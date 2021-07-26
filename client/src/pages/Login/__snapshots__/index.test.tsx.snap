@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Login>
+  <styled.div>
+    <div
+      className="sc-gtsrHT cAgKLY"
+    >
+      <Title
+        title="Github Search | Login"
+      />
+      <GithubAuth>
+        <styled.div>
+          <div
+            className="sc-bdnxRM fqXRSa"
+          >
+            <u
+              buttonText="Login to Github"
+              className="github-login-button"
+              clientId="4f262cc9e20d3043da02"
+              onFailure={[Function]}
+              onRequest={[Function]}
+              onSuccess={[Function]}
+              popupHeight={650}
+              popupWidth={500}
+              redirectUri=""
+              scope="user:email"
+            >
+              <button
+                className="github-login-button"
+                disabled={false}
+                onClick={[Function]}
+              >
+                Login to Github
+              </button>
+            </u>
+          </div>
+        </styled.div>
+      </GithubAuth>
+    </div>
+  </styled.div>
+</Login>
+`;

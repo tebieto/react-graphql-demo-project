@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <img
+    alt=""
+    className="auth-user-avatar"
+    src="user.png"
+  />
+  <span
+    className="auth-user-name"
+  >
+    John Doe
+  </span>
+  <CustomMenu />
+</styled.div>
+`;

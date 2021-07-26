@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    aria-controls="custom-menu"
+    aria-haspopup="true"
+    className="icon"
+    onClick={[Function]}
+  >
+    <Memo(ForwardRef(ExpandMoreIcon))
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    />
+  </div>
+  <WithStyles(ForwardRef(Menu))
+    anchorEl={null}
+    id="custom-menu"
+    keepMounted={true}
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(MenuItem))
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "red",
+        }
+      }
+    >
+      Logout
+    </WithStyles(ForwardRef(MenuItem))>
+  </WithStyles(ForwardRef(Menu))>
+</div>
+`;
