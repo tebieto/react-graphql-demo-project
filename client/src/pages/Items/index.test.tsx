@@ -1,10 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ResetPassword from '.';
+import Items from '.';
 
 it('renders correctly', () => {
-  const tree = mount(<ResetPassword />);
+  const tree = mount(<Items />);
   expect(toJson(tree)).toMatchSnapshot();
-  expect(tree.contains('Reset Password')).toEqual(true);
 });

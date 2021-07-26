@@ -6,9 +6,9 @@ import CustomInput from '../../components/CustomInput';
 import Title from '../../components/Title';
 import { getPageTitle } from '../../utils';
 import { PAGES } from '../../utils/constants';
-import { LoginContainer } from './styles';
+import { ResetPasswordContainer } from './styles';
 
-const Login = (): JSX.Element => {
+const ResetPassword = (): JSX.Element => {
   const handleSubmit = React.useCallback(() => {
     console.log('here');
   }, []);
@@ -17,8 +17,8 @@ const Login = (): JSX.Element => {
     console.log('here');
   }, []);
   return (
-    <LoginContainer>
-      <Title title={getPageTitle('Login')} />
+    <ResetPasswordContainer>
+      <Title title={getPageTitle('Reset Password')} />
       <CustomForm>
         <div className="form">
           <CustomInput
@@ -26,21 +26,14 @@ const Login = (): JSX.Element => {
             onChange={handleChange}
             placeholder="Enter Email"
           />
-          <CustomInput
-            name="password"
-            onChange={handleChange}
-            type="password"
-            placeholder="Enter Password"
-          />
           <div className="form-actions">
-            <Link to={PAGES.resetPassword}>Reset Password</Link>
-            <Link to={PAGES.register}>Register</Link>
-            <CustomButton onClick={handleSubmit}>Login</CustomButton>
+            <Link to={PAGES.login}>Back to Login</Link>
+            <CustomButton onClick={handleSubmit}>Reset Password</CustomButton>
           </div>
         </div>
       </CustomForm>
-    </LoginContainer>
+    </ResetPasswordContainer>
   );
 };
 
-export default Login;
+export default ResetPassword;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled(AppBar)`
   display: flex !important;
-  padding: 15px 200px;
+  padding: 15px 30px;
   @media screen and (max-width: 800px) {
     padding: 15px 10px;
     justify-content: space-between;

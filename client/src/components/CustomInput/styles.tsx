@@ -2,7 +2,6 @@ import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
 
 export const CustomInputContainer = styled(TextField)`
-  fieldset {
-    border-radius: 25px;
-  }
+  margin-bottom: 30px !important;
+  background-color: white !important;
 `;

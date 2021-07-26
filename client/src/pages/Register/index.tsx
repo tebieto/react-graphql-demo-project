@@ -6,9 +6,9 @@ import CustomInput from '../../components/CustomInput';
 import Title from '../../components/Title';
 import { getPageTitle } from '../../utils';
 import { PAGES } from '../../utils/constants';
-import { LoginContainer } from './styles';
+import { RegisterContainer } from './styles';
 
-const Login = (): JSX.Element => {
+const Register = (): JSX.Element => {
   const handleSubmit = React.useCallback(() => {
     console.log('here');
   }, []);
@@ -17,10 +17,15 @@ const Login = (): JSX.Element => {
     console.log('here');
   }, []);
   return (
-    <LoginContainer>
-      <Title title={getPageTitle('Login')} />
+    <RegisterContainer>
+      <Title title={getPageTitle('Register')} />
       <CustomForm>
         <div className="form">
+          <CustomInput
+            onChange={handleChange}
+            name="full_name"
+            placeholder="Enter Full Name"
+          />
           <CustomInput
             name="email"
             onChange={handleChange}
@@ -32,15 +37,20 @@ const Login = (): JSX.Element => {
             type="password"
             placeholder="Enter Password"
           />
+          <CustomInput
+            name="confirm"
+            onChange={handleChange}
+            type="password"
+            placeholder="Enter Password Confirmation"
+          />
           <div className="form-actions">
-            <Link to={PAGES.resetPassword}>Reset Password</Link>
-            <Link to={PAGES.register}>Register</Link>
-            <CustomButton onClick={handleSubmit}>Login</CustomButton>
+            <Link to={PAGES.login}>Login</Link>
+            <CustomButton onClick={handleSubmit}>Register</CustomButton>
           </div>
         </div>
       </CustomForm>
-    </LoginContainer>
+    </RegisterContainer>
   );
 };
 
-export default Login;
+export default Register;

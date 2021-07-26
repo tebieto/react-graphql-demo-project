@@ -47,7 +47,7 @@ export const sendResetPasswordLink = (props: {
     },
     locals: {
       name: props.user.full_name,
-      link: `${appUrl}/password/reset/callback?t=${props.token}`,
+      link: `${appUrl}/password/reset/change?t=${props.token}`,
     },
   };
 

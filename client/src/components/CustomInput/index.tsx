@@ -5,6 +5,7 @@ interface CustomInputProps {
   onChange: { (e: React.ChangeEvent<HTMLInputElement>): void };
   placeholder?: string;
   type?: string;
+  name: string;
   value?: string;
   size?: 'small' | 'medium' | undefined;
   onKeyDown?: { (e: React.KeyboardEvent<HTMLDivElement>): void };

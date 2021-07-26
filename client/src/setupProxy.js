@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-undef */
-import proxy from 'http-proxy-middleware';
+const proxy = require('http-proxy-middleware');
 
-export default function (app) {
+module.exports = function (app) {
   app.use(proxy('/graphql', { target: 'http://localhost:4444' }));
-}
+};

@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import ErrorBoundary from './components/ErrorBoundary';
+import Loader from './components/Loader';
+import Items from './pages/Items';
+import Register from './pages/Register';
+import ResetChangePassword from './pages/ResetChangePassword';
+import ResetPassword from './pages/ResetPassword';
+import { PAGES } from './utils/constants';
+const Login = lazy(() => import('./pages/Login'));
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <ErrorBoundary>
+          <Suspense fallback={<Loader />}>
+            <Route path={PAGES.home} exact component={Items} />
+            <Route path={PAGES.login} exact component={Login} />
+            <Route path={PAGES.register} exact component={Register} />
+            <Route path={PAGES.resetPassword} exact component={ResetPassword} />
+            <Route
+              path={PAGES.resetChangePassword}
+              exact
+              component={ResetChangePassword}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
