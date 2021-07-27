@@ -1,10 +1,10 @@
 # React/GraphQL Demo Project
 
-## Feathures
+## Features
 
 - User Login
 - User Registration
-- Reset PAssword
+- Reset Password
 - Change Password
 - Add Item
 - View ITems
