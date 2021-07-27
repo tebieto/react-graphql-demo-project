@@ -18,7 +18,7 @@ const persistItem = ({ makeItems, itemDb }: PersistItem) => {
       if (item) {
         return item;
       } else {
-        throw new Error('Error creatingting user, please try again.');
+        throw new Error('Error creating item..');
       }
     }
   };

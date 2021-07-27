@@ -5,8 +5,8 @@ extend type User {
 type Item {
   id: ID
   title: String
-  created_by: User
-  created_at: String
+  creator: User
+  createdAt: String
 }
 
 type Query {

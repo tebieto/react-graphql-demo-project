@@ -15,10 +15,10 @@ const findToken = ({ tokenDb }: FindToken) => {
       if (token) {
         return token;
       } else {
-        throw new Error('No token found for this email, please try again.');
+        throw new Error('No token found for this email..');
       }
     } else {
-      throw new Error('Invalid email submitted');
+      throw new Error('Invalid Email Provided');
     }
   };
 };

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface ValidateResetPasswordToken_validateResetPasswordToken {
-  __typename: "Token";
+  __typename: "TokenVar";
   email: string | null;
 }
 
@@ -18,6 +18,5 @@ export interface ValidateResetPasswordToken {
 
 export interface ValidateResetPasswordTokenVariables {
   email: string;
-  password: string;
   token: string;
 }

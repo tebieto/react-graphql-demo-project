@@ -1,8 +1,8 @@
-type Token {
+type TokenVar {
   email: String
   token: String
 }
 
 type Mutation {
-  validateResetPasswordToken(email: String!, token: String!): Token
+  validateResetPasswordToken(email: String!, token: String!): TokenVar
 }

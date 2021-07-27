@@ -18,10 +18,10 @@ COPY ./server/yarn.lock ./server/
 RUN cd server && yarn install
 
 COPY ./server ./server/
+COPY  ./server/src/email-templates/  ./server/build/email-templates/ 
 RUN cd server && yarn build
 
 # Copy just the clioent build artifacts from the previous stage.
 COPY --from=client-builder /app/client/build ./client/build
-
 ENTRYPOINT [ "node", "server/build/index.js" ]
 

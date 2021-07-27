@@ -13,21 +13,16 @@ const resetPasswordTokenValidate = ({
   return async function post(httpRequest: {
     params: TokenAttributes;
   }): Promise<TokenAttributes | void> {
-    try {
-      const { params } = httpRequest;
-      const resetToken = await getToken({
-        ...params,
-      });
-      if (resetToken) {
-        const isValid = await compareToken(params.token, resetToken.token);
-        if (!isValid) {
-          throw new Error('Token is invalid');
-        }
-        return resetToken;
+    const { params } = httpRequest;
+    const resetToken = await getToken({
+      ...params,
+    });
+    if (resetToken) {
+      const isValid = await compareToken(params.token, resetToken.token);
+      if (!isValid) {
+        throw new Error('Token is invalid');
       }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error validating token');
+      return resetToken;
     }
   };
 };

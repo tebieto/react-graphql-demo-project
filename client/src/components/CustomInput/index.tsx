@@ -1,18 +1,38 @@
 import React from 'react';
+import { CustomKeyValueObject } from '../../interface';
 import { CustomInputContainer } from './styles';
 
 interface CustomInputProps {
-  onChange: { (e: React.ChangeEvent<HTMLInputElement>): void };
+  setFields: { (params: CustomKeyValueObject): void };
+  fields: CustomKeyValueObject;
   placeholder?: string;
   type?: string;
   name: string;
-  value?: string;
+  value: string | number;
   size?: 'small' | 'medium' | undefined;
   onKeyDown?: { (e: React.KeyboardEvent<HTMLDivElement>): void };
 }
 
-const CustomInput = (props: CustomInputProps): JSX.Element => {
-  return <CustomInputContainer variant="outlined" fullWidth {...props} />;
+const CustomInput = ({
+  setFields,
+  fields,
+  ...otherProps
+}: CustomInputProps): JSX.Element => {
+  const handleChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFields({ ...fields, [name]: value });
+    },
+    [fields],
+  );
+  return (
+    <CustomInputContainer
+      variant="outlined"
+      fullWidth
+      {...otherProps}
+      onChange={handleChange}
+    />
+  );
 };
 
-export default CustomInput;
+export default React.memo(CustomInput);

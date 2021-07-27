@@ -3,8 +3,9 @@ import { UserAttributes } from '../../interface/user';
 
 interface UserResetPassword {
   getUser: { (params: UserAttributes): Promise<UserAttributes | void> };
-  saveToken: { (params: TokenAttributes): Promise<TokenAttributes | void> };
   generateToken: { (props: { id: string; email: string }): Promise<string> };
+  encryptToken: { (token: string): Promise<string> };
+  saveToken: { (params: TokenAttributes): Promise<TokenAttributes | void> };
   sendResetPasswordLink: {
     (props: { token: string; user: UserAttributes }): void;
   };
@@ -13,28 +14,28 @@ interface UserResetPassword {
 const userResetPassword = ({
   getUser,
   generateToken,
+  encryptToken,
   saveToken,
   sendResetPasswordLink,
 }: UserResetPassword) => {
   return async function post(httpRequest: {
     params: UserAttributes;
   }): Promise<string | void> {
-    try {
-      const { params } = httpRequest;
-      const user = await getUser({
-        ...params,
+    const { params } = httpRequest;
+    const user = await getUser({
+      ...params,
+    });
+    if (user && user.id) {
+      const generatedToken = await generateToken({
+        id: user.id,
+        email: user.email,
       });
-      if (user && user.id) {
-        const token = await generateToken({ id: user.id, email: user.email });
-        await saveToken({ token, email: params.email });
-        await sendResetPasswordLink({ token, user });
-        return 'Reset Link sent successfully';
-      } else {
-        throw new Error('Use with this email does not exist');
-      }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error resetting password');
+      const token = await encryptToken(generatedToken);
+      await saveToken({ token, email: params.email });
+      await sendResetPasswordLink({ token: generatedToken, user });
+      return 'Reset Link sent successfully';
+    } else {
+      throw new Error('Use with this email does not exist');
     }
   };
 };

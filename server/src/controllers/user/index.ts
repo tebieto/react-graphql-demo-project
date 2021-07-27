@@ -1,4 +1,4 @@
-import { bcryptCompare, createToken, encryptPassword } from '../../functions';
+import { bcryptCompare, bcryptEncrypt, createToken } from '../../functions';
 import { sendResetPasswordLink } from '../../functions/email';
 import { addToken, deleteToken, getToken } from '../../use-cases/token';
 import {
@@ -16,6 +16,8 @@ import userSignUp from './signup';
 const comparePassword = bcryptCompare();
 const compareToken = bcryptCompare();
 const generateToken = createToken();
+const encryptPassword = bcryptEncrypt();
+const encryptToken = bcryptEncrypt();
 export const registerUser = Object.freeze(
   userSignUp({ encryptPassword, addUser, generateToken, authenticateUser }),
 );
@@ -28,6 +30,7 @@ export const resetUserPassword = Object.freeze(
   userResetPassword({
     getUser,
     generateToken,
+    encryptToken,
     saveToken: addToken,
     sendResetPasswordLink,
   }),

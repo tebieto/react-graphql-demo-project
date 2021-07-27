@@ -7,10 +7,6 @@ export const LogoContainer = styled.div`
     cursor: pointer;
     .logo {
       height: 50px;
-
-      @media screen and (max-width: 800px) {
-        display: none;
-      }
     }
   }
 `;

@@ -7,7 +7,7 @@ export interface TokenModel extends Model<TokenAttributes>, TokenAttributes {
   updatedAt?: Date;
 }
 
-const Token = sequelize.define<TokenModel>('User', {
+const Token = sequelize.define<TokenModel>('Token', {
   email: {
     primaryKey: true,
     allowNull: false,

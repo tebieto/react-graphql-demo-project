@@ -47,9 +47,10 @@ export const sendResetPasswordLink = (props: {
     },
     locals: {
       name: props.user.full_name,
-      link: `${appUrl}/password/reset/change?t=${props.token}`,
+      link: `${appUrl}/password/reset/change?token=${props.token}&email=${props.user.email}`,
     },
   };
 
+  console.log({ RESET_LINK: options.locals.link });
   sendEmail(options);
 };

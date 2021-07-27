@@ -17,13 +17,11 @@ const apolloServer = new ApolloServer({
     res,
   }: {
     res: Response;
-    req: { user: UserAttributes; headers: { user: string } };
+    req: {
+      user: UserAttributes;
+    };
   }) => {
-    const user = req.headers.user
-      ? JSON.parse(req.headers.user)
-      : req.user
-      ? req.user
-      : null;
+    const user = req.user;
     return { user, res };
   },
 });

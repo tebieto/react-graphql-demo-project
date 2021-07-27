@@ -2,7 +2,10 @@ import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Menu, MenuItem } from '@material-ui/core';
 import colors from '../../utils/colors';
+import { useAppDispatch } from '../../redux/hooks';
+import { logUserOut } from '../../redux/user/reducer';
 const CustomMenu = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const target = document.getElementById('null');
   const [anchorEl, setAnchorEl] = React.useState(target);
   const handleClick = React.useCallback(
@@ -17,7 +20,7 @@ const CustomMenu = (): JSX.Element => {
   }, []);
 
   const handleLogout = React.useCallback(() => {
-    window.location.reload();
+    dispatch(logUserOut());
   }, []);
 
   const id = 'custom-menu';

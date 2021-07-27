@@ -15,10 +15,10 @@ const findUser = ({ userDb }: FindUser) => {
       if (user) {
         return user;
       } else {
-        throw new Error('No user found for this email, please try again.');
+        throw new Error('No user found for this email');
       }
     } else {
-      throw new Error('Invalid email submitted');
+      throw new Error('Invalid Session');
     }
   };
 };

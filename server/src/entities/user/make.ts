@@ -9,7 +9,7 @@ const makeUser = () => {
     if (!email) {
       throw new Error('Please enter email.');
     }
-    if (password) {
+    if (!password) {
       throw new Error('Please enter password.');
     }
     return Object.freeze({ full_name, email, password });

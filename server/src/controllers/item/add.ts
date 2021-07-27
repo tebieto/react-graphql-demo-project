@@ -9,21 +9,16 @@ const userAddItem = ({ addItem }: UserAddItem) => {
     params: ItemAttributes;
     user: UserAttributes;
   }): Promise<ItemAttributes | void> {
-    try {
-      const { params, user } = httpRequest;
-      if (user && user.id) {
-        const item = await addItem({
-          ...params,
-          created_by: user.id,
-        });
+    const { params, user } = httpRequest;
+    if (user && user.id) {
+      const item = await addItem({
+        ...params,
+        created_by: user.id,
+      });
 
-        return item;
-      } else {
-        throw new Error('You are not an authenticated user');
-      }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error adding item');
+      return item;
+    } else {
+      throw new Error('You are not an authenticated user');
     }
   };
 };

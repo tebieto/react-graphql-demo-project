@@ -1,6 +1,7 @@
 import { DataTypes, Model, UUIDV4 } from 'sequelize';
 import { ItemAttributes } from '../../../../interface/item';
 import { sequelize } from '../index';
+import User from '../user';
 
 export interface ItemModel extends Model<ItemAttributes>, ItemAttributes {
   createdAt?: Date;
@@ -17,16 +18,18 @@ const Item = sequelize.define<ItemModel>('Item', {
   created_by: {
     allowNull: false,
     type: DataTypes.UUID,
-    references: {
-      model: 'Users',
-      key: 'id',
-    },
   },
   title: {
     allowNull: false,
     unique: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.TEXT,
   },
+});
+
+Item.belongsTo(User, {
+  as: 'creator',
+  foreignKey: 'created_by',
+  targetKey: 'id',
 });
 
 export default Item;

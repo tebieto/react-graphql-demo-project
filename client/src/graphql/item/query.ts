@@ -1,14 +1,12 @@
 import { gql } from '@apollo/client';
 
-export const GET_ITEM = gql`
+export const GET_ITEMS = gql`
   query GetItems {
     getItems {
       id
       title
       creator {
-        id
         full_name
-        email
       }
       createdAt
     }

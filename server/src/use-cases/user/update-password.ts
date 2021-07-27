@@ -15,7 +15,7 @@ const updateUserPassword = ({ userDb }: UpdateUserPassword) => {
       if (user) {
         return user;
       } else {
-        throw new Error('User not found, please try again.');
+        throw new Error('User not found..');
       }
     } else {
       throw new Error('Invalid email or password');

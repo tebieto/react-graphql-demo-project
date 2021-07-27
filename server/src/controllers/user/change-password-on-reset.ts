@@ -29,29 +29,25 @@ const userChangePasswordOnReset = ({
     params: { email: string; password: string; token: string };
     res: Response;
   }): Promise<string | void> {
-    try {
-      const { params, res } = httpRequest;
-      const tokenObj = await getToken({
-        ...params,
-      });
+    const { params, res } = httpRequest;
+    const tokenObj = await getToken({
+      ...params,
+    });
 
-      if (tokenObj) {
-        const isValidToken = await compareToken(params.token, tokenObj.token);
+    if (tokenObj) {
+      const isValidToken = await compareToken(params.token, tokenObj.token);
 
-        if (isValidToken) {
-          const password = await encryptPassword(params.password);
-          await changeUserPassword({ ...params, password });
-          await deleteToken({ ...params });
-          authenticateUser({ res, token: params.token });
-        } else {
-          throw new Error('Invalid Token');
-        }
+      if (isValidToken) {
+        const password = await encryptPassword(params.password);
+        await changeUserPassword({ ...params, password });
+        await deleteToken({ ...params });
+        authenticateUser({ res, token: params.token });
+        return 'Your password was changed successfully';
       } else {
-        throw new Error('Expired Token');
+        throw new Error('Invalid Token');
       }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error changing password');
+    } else {
+      throw new Error('Expired Token');
     }
   };
 };

@@ -1,6 +1,6 @@
 import { ModelCtor } from 'sequelize/types';
 import { ItemAttributes } from '../../interface/item';
-import Item, { ItemModel } from '../sequelize/models/item';
+import { ItemModel } from '../sequelize/models/item';
 
 interface ItemBaseAttr {
   models: {
@@ -23,9 +23,15 @@ const itemBase = ({ models }: ItemBaseAttr): ItemBaseQuery => {
     data: ItemAttributes,
   ): Promise<ItemAttributes | void> {
     try {
-      const User = models.Item;
-      const res = await User.create(data);
-      return res;
+      const Item = models.Item;
+      const created = await Item.create(data);
+      const res = await Item.findOne({
+        where: { id: created.id },
+        include: { all: true },
+      });
+      if (res) {
+        return res;
+      }
     } catch (e) {
       console.log('Error: ', e);
     }

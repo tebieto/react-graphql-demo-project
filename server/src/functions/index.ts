@@ -24,9 +24,11 @@ export const decodeToken = async (
   return await (jsonwebtoken.verify(token, JWT_SECRET) as UserAttributes);
 };
 
-export const encryptPassword = async (password: string): Promise<string> => {
-  const salt = await bcrypt.genSalt(10);
-  return (await password) ? bcrypt.hash(password, salt) : '';
+export const bcryptEncrypt = () => {
+  return async (str: string): Promise<string> => {
+    const salt = await bcrypt.genSalt(10);
+    return (await str) ? bcrypt.hash(str, salt) : '';
+  };
 };
 
 export const bcryptCompare = () => {

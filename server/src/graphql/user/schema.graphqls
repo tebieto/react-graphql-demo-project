@@ -2,7 +2,7 @@ type User {
   id: ID
   full_name: String
   email: String
-  created_at: String
+  createdAt: String
 }
 
 type Query {

@@ -19,21 +19,16 @@ const userSignUp = ({
     params: UserAttributes;
     res: Response;
   }): Promise<UserAttributes | void> {
-    try {
-      const { params, res } = httpRequest;
-      const password = await encryptPassword(params.password as string);
-      const user = await addUser({
-        ...params,
-        password,
-      });
-      if (user && user.id) {
-        const token = await generateToken({ id: user.id, email: user.email });
-        await authenticateUser({ res, token });
-        return user;
-      }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error creating user');
+    const { params, res } = httpRequest;
+    const password = await encryptPassword(params.password as string);
+    const user = await addUser({
+      ...params,
+      password,
+    });
+    if (user && user.id) {
+      const token = await generateToken({ id: user.id, email: user.email });
+      await authenticateUser({ res, token });
+      return user;
     }
   };
 };

@@ -21,26 +21,21 @@ const userSignIn = ({
     params: UserAttributes;
     res: Response;
   }): Promise<UserAttributes | void> {
-    try {
-      const { params, res } = httpRequest;
-      const user = await getUser({
-        ...params,
-      });
-      if (user && user.id && params.password && user.password) {
-        const validPassword = await comparePassword(
-          params.password,
-          user.password,
-        );
-        if (!validPassword) {
-          throw new Error('This password is invalid');
-        }
-        const token = await generateToken({ id: user.id, email: user.email });
-        await authenticateUser({ res, token });
-        return user;
+    const { params, res } = httpRequest;
+    const user = await getUser({
+      ...params,
+    });
+    if (user && user.id && params.password && user.password) {
+      const validPassword = await comparePassword(
+        params.password,
+        user.password,
+      );
+      if (!validPassword) {
+        throw new Error('This password is invalid');
       }
-    } catch (e) {
-      console.log(e);
-      throw new Error('Error creating user');
+      const token = await generateToken({ id: user.id, email: user.email });
+      await authenticateUser({ res, token });
+      return user;
     }
   };
 };

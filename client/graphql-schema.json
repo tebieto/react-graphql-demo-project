@@ -64,7 +64,7 @@
             "deprecationReason": null
           },
           {
-            "name": "created_at",
+            "name": "createdAt",
             "description": null,
             "args": [],
             "type": {
@@ -277,7 +277,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Token",
+              "name": "TokenVar",
               "ofType": null
             },
             "isDeprecated": false,
@@ -479,7 +479,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Token",
+        "name": "TokenVar",
         "description": null,
         "specifiedByUrl": null,
         "fields": [

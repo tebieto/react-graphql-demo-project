@@ -9,9 +9,7 @@
 
 export interface GetItems_getItems_creator {
   __typename: "User";
-  id: string | null;
   full_name: string | null;
-  email: string | null;
 }
 
 export interface GetItems_getItems {

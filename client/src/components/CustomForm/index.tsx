@@ -1,4 +1,5 @@
-import React from 'react';
+import { ApolloError } from '@apollo/client';
+import React, { useEffect } from 'react';
 import Logo from '../../components/Logo';
 import Title from '../../components/Title';
 import { getPageTitle } from '../../utils';
@@ -6,9 +7,15 @@ import { CustomFormContainer } from './styles';
 
 interface CustomFormProps {
   children: JSX.Element;
+  error: ApolloError | undefined;
 }
 
-const CustomForm = ({ children }: CustomFormProps): JSX.Element => {
+const CustomForm = ({ children, error }: CustomFormProps): JSX.Element => {
+  useEffect(() => {
+    if (error && error.message) {
+      alert(error.message);
+    }
+  }, [error]);
   return (
     <CustomFormContainer>
       <Title title={getPageTitle('Login')} />
@@ -20,4 +27,4 @@ const CustomForm = ({ children }: CustomFormProps): JSX.Element => {
   );
 };
 
-export default CustomForm;
+export default React.memo(CustomForm);

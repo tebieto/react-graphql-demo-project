@@ -14,14 +14,14 @@ const persistToken = ({ makeTokens, tokenDb }: PersistToken) => {
 
     if (data) {
       const exists = await tokenDb.getTokenByEmail(data);
-      if (exists) tokenDb.destroyToken(data);
+      if (exists) await tokenDb.destroyToken(data);
 
       const token = await tokenDb.persistNewToken(data);
 
       if (token) {
         return token;
       } else {
-        throw new Error('Error creating token, please try again.');
+        throw new Error('Error creating token..');
       }
     }
   };
