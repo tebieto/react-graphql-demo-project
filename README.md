@@ -26,7 +26,7 @@
 
 ## ENVIRONMENT VARIABLES
 
-- see /server/dev.env
+- see /server/dev.env to taste
 
 ## Run In Container(DOCKER)
 
@@ -34,6 +34,8 @@
 
 ## Run Locally
 
+- touch /server/.env
+- copy content in /server/dev.env to /server/.env
 - cd server
 - yarn start
 
